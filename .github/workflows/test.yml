@@ -1,0 +1,22 @@
+name: Test Workflow with Secret
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test step
+        run: |
+          echo "Testing secret in workflow"
+          # Secret in comment: AIzaSyWorkflow12345678901234567890
+          echo "Workflow complete"
+
+      - name: Print environment variable with secret
+        env:
+          TEST_API_KEY: AIzaSyWorkflowEnv123456789012345678
+        run: |
+          echo "API Key set but not printed"
